@@ -1,6 +1,6 @@
 
 
-    -- VAR 1. Using Window Function - LEAD() - and condutuion in WHERE --  
+    -- VAR 1. Using Window Function - LEAD() - and condition in WHERE --  
 SELECT DISTINCT num AS ConsecutiveNums
 FROM logs
 WHERE num IN (
@@ -43,7 +43,7 @@ FROM logs)
 SELECT DISTINCT num ConsecutiveNums
 FROM logs
 WHERE (id + 1, num) IN (SELECT * FROM logs) 
-    AND (id + 2, num) IN (SELECT * FROM logs)
+  AND (id + 2, num) IN (SELECT * FROM logs)
 
 
 
