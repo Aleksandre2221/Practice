@@ -1,6 +1,6 @@
 
 
-    -- VAR 1. Using Window Function - DDENSE_RANK() -- 
+    -- Approach 1. Using Window Function - DDENSE_RANK() -- 
 SELECT MAX(Salary) AS SecondHighestSalary 
 FROM
     (SELECT *, 
@@ -9,7 +9,7 @@ FROM
 WHERE rnk = 2
 
 
-    -- VAR 2. Scalar Subquery -- 
+    -- Approach 2. Scalar Subquery -- 
 SELECT (
     SELECT DISTINCT salary
     FROM employee 
@@ -18,13 +18,7 @@ SELECT (
 ) AS SecondHighestSalary 
 
 
-    -- VAR 3. 
-SELECT MAX(salary) AS SecondHighestSalary 
-FROM employee
-WHERE salary < (SELECT MAX(salary) FROM employee)
-
-
-    -- VAR 4. Using - Join 
+    -- Approach 3. Using - WHERE - condition -- 
 SELECT MAX(salary) AS SecondHighestSalary 
 FROM employee
 WHERE salary < (SELECT MAX(salary) FROM employee)
