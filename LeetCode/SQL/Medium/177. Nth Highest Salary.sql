@@ -1,5 +1,5 @@
 
-    -- VAR 1. PostgreSQL: Using Window Function - DENSE_RANK - 
+    -- Approach 1. PostgreSQL: Using Window Function - DENSE_RANK - 
 CREATE OR REPLACE FUNCTION NthHighestSalary(N INT) RETURNS TABLE (Salary INT) AS $$
 BEGIN
   RETURN QUERY (
@@ -13,7 +13,7 @@ $$ LANGUAGE plpgsql;
 
 
 
-    -- VAR 2. PostgreSQL: Using - IF - condition
+    -- Approach 2. PostgreSQL: Using - IF - condition
 CREATE OR REPLACE FUNCTION NthHighestSalary(N INT) RETURNS TABLE (Salary INT) AS $$
 BEGIN
 IF N < 1 THEN
@@ -31,7 +31,7 @@ $$ LANGUAGE plpgsql;
 
 
 
-    -- VAR 3. MySQL: Using - SET -
+    -- Approach 3. MySQL: Using - SET -
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
 SET N = N-1;
