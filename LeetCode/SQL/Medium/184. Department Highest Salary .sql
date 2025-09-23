@@ -1,5 +1,5 @@
 
-    -- VAR 1. Using Subquery --
+    -- Approach 1. Using Subquery --
 SELECT d.name Department, e.name Employee, e.salary Salary
 FROM employee e
 JOIN department d ON d.id = e.departmentid
@@ -10,7 +10,7 @@ WHERE e.salary = (
 )
 
 
-   -- VAR 2. Using Window Function - RANK() - and - CTE - 
+   -- Approach 2. Using Window Function - RANK() - and - CTE - 
 WITH ranked AS (
     SELECT d.name AS Department, 
            e.name AS Employee, 
