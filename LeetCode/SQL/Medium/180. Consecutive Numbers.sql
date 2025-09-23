@@ -1,6 +1,6 @@
 
 
-    -- VAR 1. Using Window Function - LEAD() - and condition in WHERE --  
+    -- Approach 1. Using Window Function - LEAD() - and condition in WHERE --  
 SELECT DISTINCT num AS ConsecutiveNums
 FROM logs
 WHERE num IN (
@@ -13,7 +13,7 @@ WHERE num IN (
 
   
 
-    -- VAR 2. Using Window Function - LEAD() - and CTE --
+    -- Approach 2. Using Window Function - LEAD() - and CTE --
 WITH cte AS (
     SELECT num,
         LEAD(num, 1) OVER() num1,
@@ -26,7 +26,7 @@ WHERE num = num1 AND num = num2
 
 
   
-    -- VAR 3. Using Window Functions - LEAD() and LAG() --
+    -- Approach 3. Using Window Functions - LEAD() and LAG() --
 SELECT DISTINCT num AS ConsecutiveNums
 FROM logs
 WHERE num IN (
@@ -39,7 +39,7 @@ FROM logs)
 
 
   
-    -- VAR 4. Without Window Functions --
+    -- Approach 4. Without Window Functions --
 SELECT DISTINCT num ConsecutiveNums
 FROM logs
 WHERE (id + 1, num) IN (SELECT * FROM logs) 
