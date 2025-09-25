@@ -20,3 +20,25 @@ WHERE id NOT IN (
 )
 
         -- WARNING: If you try to delete direcrly without subquery, in MySQL you will receive error: “You can’t specify target table for update in FROM clause”.
+  
+
+  
+      -- Approach 3. The Shortest Solution for PostgreSQL -- 
+DELETE FROM person
+WHERE id NOT IN (
+    SELECT MIN(id)
+    FROM person
+    GROUP BY email
+)
+  
+
+
+      -- Approach 4. Using - CTE - and Window Function - ROW_NUMBER() -- 
+WITH row_num AS (SELECT *, ROW_NUMBER() OVER(PARTITION BY email ORDER BY id) rn FROM person) 
+DELETE FROM person
+WHERE id IN (
+  SELECT id
+  FROM row_num > 1
+)
+
+  
