@@ -1,6 +1,5 @@
 
 
-
       -- Approach 1. The shortest solution for MySQL --   
 DELETE p FROM Person p
 JOIN Person p2 
@@ -40,5 +39,33 @@ WHERE id IN (
   SELECT id
   FROM row_num > 1
 )
+
+      
+
+      -- Approach 5. Using - EXISTS -- 
+DELETE FROM person p1
+WHERE EXISTS (
+    SELECT 1
+    FROM person p2
+    WHERE p1.email = p2.email 
+        AND p1.id > p2.id
+)
+
+  
+
+      -- Approach 6. Using - Self-Join -- 
+DELETE FROM person p1
+WHERE id IN (
+    SELECT p1.id
+    FROM person p1
+    JOIN person p2 
+        ON p1.email = p2.email AND p1.id > p2.id
+)
+
+
+
+
+
+
 
   
