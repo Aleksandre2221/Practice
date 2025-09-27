@@ -32,6 +32,16 @@ WHERE EXISTS (
 )
 
 
+        -- Approach 4. Using - Window Function - COUNT() -- 
+SELECT DISTINCT e.name
+FROM (
+    SELECT *, COUNT(*) OVER(PARTITION BY managerid) cnt
+    FROM employee
+) sub
+JOIN employee e ON e.id = sub.managerid
+WHERE sub.cnt >= 5
+
+
 
 
 
