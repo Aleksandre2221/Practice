@@ -19,6 +19,17 @@ SELECT *
 FROM first_logins;
 
 
+         -- Approach 3. Using Window Function - MIN -- 
+SELECT DISTINCT player_id,
+       MIN(event_date) OVER (PARTITION BY player_id) AS first_login
+FROM activity;
+
+
+         -- Approach 4. Using - DISTINCT ON - Only in PostgreSQL! -- 
+SELECT DISTINCT ON (player_id) player_id, event_date AS first_login
+FROM activity
+ORDER BY player_id, event_date;
+
 
 
 
