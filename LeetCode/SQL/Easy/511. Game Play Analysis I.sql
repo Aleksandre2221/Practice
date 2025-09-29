@@ -9,7 +9,7 @@ GROUP BY player_id
 ) sub
 
 
-        -- Approach 2. Using - CTE - 
+        -- Approach 2. Using - CTE -- 
 WITH first_logins AS (
     SELECT player_id, MIN(event_date) AS first_login
     FROM activity
