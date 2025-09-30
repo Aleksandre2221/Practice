@@ -38,6 +38,13 @@ WHERE (player_id, event_date) IN (
 
 
 
+        -- Approach 5. Using Window Function - FIRST_VALUE() -- 
+SELECT DISTINCT player_id,
+       FIRST_VALUE(device_id) OVER (PARTITION BY player_id ORDER BY event_date) AS device_id
+FROM activity;
+
+
+
 
 
 
