@@ -11,4 +11,12 @@ LIMIT 1;
 
 
 
-         -- Approach 2. 
+         -- Approach 2. Using - GROUP BY with - HAVING -- 
+SELECT question_id, 
+    COUNT(*) FILTER(WHERE answer_id IS NULL)::numeric 
+      / COUNT(*) FILTER(WHERE answer_id IS NOT NULL) AS answer_rate
+FROM survey_log
+GROUP BY question_id
+HAVING COUNT(*) FILTER(WHERE answer_id IS NOT NULL) > 0 
+ORDER BY answer_rate
+LIMIT 1;
