@@ -1,22 +1,21 @@
 
 
-         -- Approach 1. Using - GROUP BY and - FILTER  clause -- 
+         -- Approach 1. Using - GROUP BY and - FILTER -- 
 SELECT question_id, 
-    COUNT(*) FILTER(WHERE answer_id IS NULL)::numeric 
-      / NULLIF(COUNT(*) FILTER(WHERE answer_id IS NOT NULL),0) AS answer_rate
+    COUNT(*) FILTER(WHERE answer_id IS NOT NULL)::numeric 
+      / COUNT(*) AS answer_rate
 FROM survey_log
 GROUP BY question_id
-ORDER BY answer_rate
+ORDER BY answer_rate DESC
 LIMIT 1;
 
 
 
          -- Approach 2. Using - GROUP BY with - HAVING -- 
 SELECT question_id, 
-    COUNT(*) FILTER(WHERE answer_id IS NULL)::numeric 
-      / COUNT(*) FILTER(WHERE answer_id IS NOT NULL) AS answer_rate
+    COUNT(*) FILTER(WHERE answer_id IS NOT NULL)::numeric 
+      / COUNT(*) AS answer_rate
 FROM survey_log
 GROUP BY question_id
-HAVING COUNT(*) FILTER(WHERE answer_id IS NOT NULL) > 0 
-ORDER BY answer_rate
+ORDER BY answer_rate DESC
 LIMIT 1;
