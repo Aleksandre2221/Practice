@@ -18,6 +18,7 @@ LEFT JOIN child_cnt ON tree.id = child_cnt.p_id;
 
 
 
+
            -- Approach 2. The BEST one Using only - CASE....WHEN -- 
 SELECT id, 
     CASE 
@@ -26,3 +27,5 @@ SELECT id,
         ELSE 'Leaf'
     END Type 
 FROM Tree
+
+
