@@ -15,3 +15,14 @@ SELECT tree.id,
     END type 
 FROM tree  
 LEFT JOIN child_cnt ON tree.id = child_cnt.p_id;
+
+
+
+           -- Approach 2. The BEST one Using only - CASE....WHEN -- 
+SELECT id, 
+    CASE 
+        WHEN p_id IS NULL THEN 'Root'
+        WHEN id IN (SELECT p_id FROM Tree) THEN 'Inner'
+        ELSE 'Leaf'
+    END Type 
+FROM Tree
