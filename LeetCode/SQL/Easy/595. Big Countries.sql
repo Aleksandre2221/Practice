@@ -1,8 +1,6 @@
 
 
          -- The Best Approach. Using - WHERE condition --
-SELECT customer_number
-FROM orders 
-GROUP BY customer_number
-ORDER BY COUNT(*) DESC 
-LIMIT 1;
+SELECT name, population, area 
+FROM world 
+WHERE area >= 3000000 OR population >= 25000000
