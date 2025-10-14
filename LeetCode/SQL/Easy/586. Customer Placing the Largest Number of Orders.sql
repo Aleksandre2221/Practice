@@ -15,3 +15,14 @@ FROM orders
 GROUP BY customer_number
 ORDER BY COUNT(*) DESC;
 
+
+
+         -- Approach 3. Using - Subquery with - Window Function - RANK() -- 
+SELECT customer_number
+FROM (
+  SELECT customer_number,
+    ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) rn
+  FROM orders
+  GROUP BY customer_number
+) ranked
+WHERE rn = 1;
