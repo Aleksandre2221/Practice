@@ -3,13 +3,12 @@
          -- Approach 1. Using - NOT IN - condition with multiple - LEFT JOIN -- 
 SELECT name  
 FROM salesperson 
-WHERE name NOT IN (
-  SELECT s.name
+WHERE sales_id NOT IN (
+  SELECT s.sales_id
   FROM salesperson s 
   LEFT JOIN orders o ON o.sales_id = s.sales_id
   LEFT JOIN company c ON c.com_id = o.com_id
   WHERE c.name = 'RED');
-
 
 
 
@@ -22,7 +21,6 @@ WHERE s.sales_id NOT IN (
     JOIN company c ON o.com_id = c.com_id
     WHERE c.name = 'RED'
 );
-
 
 
 
