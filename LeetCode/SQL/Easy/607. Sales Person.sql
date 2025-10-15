@@ -9,3 +9,15 @@ WHERE name NOT IN (
   LEFT JOIN orders o ON o.sales_id = s.sales_id
   LEFT JOIN company c ON c.com_id = o.com_id
   WHERE c.name = 'RED');
+
+
+
+         -- Approach 2. Using - NOT IN - condition with one - INNER JOIN -- 
+SELECT s.name
+FROM salesperson s
+WHERE s.sales_id NOT IN (
+    SELECT o.sales_id
+    FROM orders o
+    JOIN company c ON o.com_id = c.com_id
+    WHERE c.name = 'RED'
+);
