@@ -33,6 +33,24 @@ WHERE o.sales_id IS NULL;
 
 
 
+          -- Approach 4. Using - NOT EXISTS conditon -- 
+SELECT  s.name 
+FROM salesperson s 
+WHERE NOT EXISTS (
+  SELECT 1 
+  FROM orders o 
+  JOIN company c ON c.com_id = o.com_id
+  WHERE o.sales_id = s.sales_id AND c.name = 'RED');
+
+
+
+
+
+
+
+
+
+
 
 
 
