@@ -9,17 +9,26 @@ ORDER BY rating DESC;
 
 
 
-         -- Approach 2. Using - WHERE condition with - NOT ILIKE (case insensitive) -- 
+         -- Approach 2. Using - WHERE condition with - NOT ILIKE (case insensitive - ONLY PostgreSQL) -- 
 SELECT * 
 FROM cinema 
 WHERE id % 2 = 1 AND description NOT ILIKE '%BoriNg%'
 ORDER BY rating DESC;
-  
 
 
-  
-         -- Approach 2. Using - WHERE condition with - <> operator -- 
+
+
+         -- Approach 3. Using - WHERE condition with - LOWER() and - NOT LIKE (cross-database, alternative of NOT ILIKE) --
 SELECT * 
 FROM cinema 
-WHERE id % 2 = 1 AND description <> '%boring%'
+WHERE id % 2 = 1 AND LOWER(description) NOT LIKE '%boring%'
+ORDER BY rating DESC;
+
+  
+
+  
+         -- Approach 4. Using - WHERE condition with - <> operator -- 
+SELECT * 
+FROM cinema 
+WHERE id % 2 = 1 AND description <> 'boring'
 ORDER BY rating DESC;
