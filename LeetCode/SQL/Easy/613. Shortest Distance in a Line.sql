@@ -7,12 +7,9 @@ JOIN point p2 ON p1.x <> p2.x;
 
 
 
-         -- Approach 2. Without using - MIN --
-SELECT distance shortest
-FROM (
-  SELECT *, ABS(p1.x - p2.x) distance
+         -- Approach 2. Without - MIN using - ORDER BY with - LIMIT 1 --
+  SELECT ABS(p1.x - p2.x) shortest
   FROM point p1 
   JOIN point p2 ON p1.x <> p2.x
-  ORDER BY distance 
-  LIMIT 1
-);
+  ORDER BY shortest 
+  LIMIT 1;
