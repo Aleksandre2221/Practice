@@ -1,7 +1,7 @@
 
 
          -- Approach 1. Using - NOT IN condition --
-SELECT buyer_id, product_name 
+SELECT DISTINCT buyer_id, product_name 
 FROM sales s 
 JOIN product p ON p.product_id = s.product_id
 WHERE product_name = 'S8' 
