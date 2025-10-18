@@ -1,9 +1,11 @@
 
 
-         -- Approach 1. Using - GROUP BY / ORDER BY / LIMIT -- 
+         -- Approach 1. Using - GROUP BY / HAVING / Subquery / -- 
 SELECT project_id 
 FROM project 
 GROUP BY project_id
-ORDER BY COUNT(*) DESC 
-LIMIT 1;
+HAVING COUNT(*) = (
+    SELECT MAX(cnt) 
+    FROM (SELECT COUNT(*) cnt FROM project GROUP BY project_id)
+  );
 
