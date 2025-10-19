@@ -1,6 +1,6 @@
 
 
-         -- Approach 1. Using - NOT IN condition -- 
+         -- Approach 1. Using - NOT IN condition -
 SELECT DISTINCT p.product_id, p.product_name
 FROM sales s1 
 JOIN product p ON p.product_id = s1.product_id 
