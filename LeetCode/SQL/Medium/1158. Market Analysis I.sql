@@ -10,7 +10,7 @@ LEFT JOIN orders o ON u.user_id = o.buyer_id
   AND EXTRACT(YEAR FROM o.order_date) = 2019
 GROUP BY u.user_id, u.join_date;
 
-
+.
 
          -- Approach 2. Using - CTE and - LEFT JOIN -- 
 WITH valid_buyers AS (
