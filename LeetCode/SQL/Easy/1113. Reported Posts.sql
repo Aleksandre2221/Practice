@@ -1,6 +1,6 @@
 
 
-         -- Approach 1. Using multiple - WHERE conditions with - GROUP BY and - COUNT(DISTINCT..) --  
+         -- The Best Approach. Using multiple - WHERE conditions with - GROUP BY and - COUNT(DISTINCT..) --  
 SELECT extra, COUNT(DISTINCT post_id) report_count
 FROM actions
 WHERE 
