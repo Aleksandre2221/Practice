@@ -1,6 +1,6 @@
 
 
-         -- Approach 1. Using - UNION ALL -- 
+         -- Approach 1. Using - UNION ALL -
 SELECT id, COUNT(*) num  
 FROM (
   	SELECT accepter_id id FROM requestaccepted
