@@ -36,7 +36,7 @@ GROUP BY v.customer_id;
 
 
          -- Approach 4. Using - ALL --
-SELECT v.customer_id, COUNT(v.customer_id), count_no_trans
+SELECT v.customer_id, COUNT(v.customer_id) count_no_trans
 FROM visits v
 WHERE v.visit_id != ALL (
     SELECT DISTINCT t.visit_id
