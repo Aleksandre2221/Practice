@@ -20,6 +20,29 @@ WHERE NOT EXISTS (
 )
 GROUP BY  v.customer_id;
 
+  
+
+
+         -- Approach 3. Using - NOT IN -- 
+SELECT v.customer_id, COUNT(*) count_no_trans
+FROM visits v
+WHERE v.visit_id NOT IN (
+    SELECT t.visit_id
+    FROM transactions t
+)
+GROUP BY v.customer_id;
+
+
+
+
+         -- Approach 4. Using - ALL --
+SELECT v.customer_id, COUNT(v.customer_id), count_no_trans
+FROM visits v
+WHERE v.visit_id != ALL (
+    SELECT DISTINCT t.visit_id
+    FROM transactions t
+)
+GROUP BY v.customer_id;
 
 
 
