@@ -10,3 +10,12 @@ FROM (
 )
 WHERE city_avg > national_avg
 ORDER BY city;
+
+
+
+         -- Approach 2. Using - GROUP BY with - HAVING condition -- 
+SELECT city
+FROM listings
+GROUP BY city
+HAVING AVG(price) > (SELECT AVG(price) FROM listings)
+ORDER BY city;
