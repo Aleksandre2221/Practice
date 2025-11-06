@@ -1,6 +1,6 @@
 
 
-         -- Approach 1. Using - Subquery and - WHERE condition -- 
+         -- Approach 1. Using - Subquery with Window Function - AVG -- 
 SELECT city 
 FROM (
   SELECT DISTINCT city,
