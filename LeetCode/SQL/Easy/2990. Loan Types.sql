@@ -18,3 +18,18 @@ JOIN Loans b ON a.user_id = b.user_id
 WHERE a.loan_type = 'Refinance' AND b.loan_type = 'Mortgage'
 ORDER BY a.user_id;
 
+
+
+
+         -- Approach 3. Using - INTERSECT -- 
+SELECT user_id
+FROM Loans
+WHERE loan_type = 'Refinance'
+
+INTERSECT
+
+SELECT user_id
+FROM Loans
+WHERE loan_type = 'Mortgage'
+
+ORDER BY user_id;
