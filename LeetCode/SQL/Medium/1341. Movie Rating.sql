@@ -21,4 +21,4 @@ WITH
     )
 SELECT * FROM user_name
 UNION ALL
-SELECT * FROM movie_name;
+SELECT * FROM movie_name
