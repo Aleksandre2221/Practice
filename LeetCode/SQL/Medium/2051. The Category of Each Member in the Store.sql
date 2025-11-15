@@ -1,6 +1,6 @@
 
 
-         -- Approach 1. Using two - LEFT JOIN and - CASE...WHEN conditions -- 
+         -- The Best Approach. Using two - LEFT JOIN and - CASE...WHEN conditions -- 
 SELECT m.member_id, m.name,
     CASE
         WHEN COUNT(v.visit_id) = 0 THEN 'Bronze'
